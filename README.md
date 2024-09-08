@@ -38,6 +38,20 @@ SLH => Collin
 
 Bank + 5000
 
-SLHDotNetCore
+``` sql 
 
+select * from Tbl_Blog 
+
+select * from Tbl_Blog where DeleteFlag=0
+
+
+update Tbl_Blog set BlogTitle ='Unique Title' where BlogId= 1
+
+
+delete from Tbl_Blog where BlogId=3
+
+update Tbl_Blog set DeleteFlag=0
+
+update Tbl_Blog set DeleteFlag=1 where BlogId=5
+```
 
