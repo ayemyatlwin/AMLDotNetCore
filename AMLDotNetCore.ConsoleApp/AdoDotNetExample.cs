@@ -72,6 +72,45 @@ namespace AMLDotNetCore.ConsoleApp
 
         }
 
-       
+        public void Create()
+        {
+            Console.WriteLine("Blog Title: ");
+            string title = Console.ReadLine();
+
+            Console.WriteLine("Blog Author: ");
+            string author = Console.ReadLine();
+
+            Console.WriteLine("Blog Content: ");
+            string content = Console.ReadLine();
+
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+
+
+            string query = $@"INSERT INTO [dbo].[Tbl_Blog]
+                    ([BlogTitle]
+                    ,[BlogAuthot]
+                    ,[BlogContent]
+                    ,[DeleteFlag])
+              VALUES
+                    (@BlogTitle
+                    ,@BlogAuthot
+                    ,@BlogContent
+                    ,0)";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@BlogTitle", title);
+            cmd.Parameters.AddWithValue("@BlogAuthot", author);
+            cmd.Parameters.AddWithValue("@BlogContent", content);
+
+            int result = cmd.ExecuteNonQuery();
+
+            connection.Close();
+
+            Console.WriteLine(result == 1 ? "Saving Successful." : "Saving Failed.");
+        }
+
+
     }
 }

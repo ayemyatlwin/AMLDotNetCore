@@ -30,7 +30,9 @@ Console.WriteLine("Hello, World!");
 // 101
 
 AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
-adoDotNetExample.Read();
+//adoDotNetExample.Read();
+adoDotNetExample.Create();
+
 
 
 Console.ReadKey();
