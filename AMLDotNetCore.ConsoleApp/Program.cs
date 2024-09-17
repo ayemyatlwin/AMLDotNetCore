@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using AMLDotNetCore.ConsoleApp;
+using System.Data;
 using System.Data.SqlClient;
 
 Console.WriteLine("Hello, World!");
@@ -27,64 +28,10 @@ Console.WriteLine("Hello, World!");
 // 100 = 99
 
 // 101
-string connectionString = "Data Source=.;Initial Catalog=BlogManagementDatabase;User ID=sa;Password=sasa@123;";
 
+AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
+adoDotNetExample.Read();
 
-Console.WriteLine("Connection String:"+connectionString);
-
-SqlConnection conection = new SqlConnection(connectionString);
-
-Console.WriteLine("Connection Opening...");
-
-
-conection.Open();
-
-Console.WriteLine("Connection Opened");
-
-Console.WriteLine("Connection Closing...");
-
-string query = @"SELECT [BlogId]
-      ,[BlogTitle]
-      ,[BlogAuthot]
-      ,[BlogContent]
-      ,[DeleteFlag]
-  FROM [dbo].[Tbl_Blog] where DeleteFlag = 0";
-
-SqlCommand cmd = new SqlCommand(query,conection);
-
-//SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-
-//DataTable dt = new DataTable();
-
-//adapter.Fill(dt);
-
-
-SqlDataReader reader = cmd.ExecuteReader();
-while (reader.Read())
-{
-    Console.WriteLine(reader["BlogId"]);
-    Console.WriteLine(reader["BlogTitle"]);
-    Console.WriteLine(reader["BlogAuthot"]);
-    Console.WriteLine(reader["BlogContent"]);
-}
-
-
-
-conection.Close();
-
-
-
-Console.WriteLine("Connection Closed");
-
-//foreach (DataRow dr in dt.Rows)
-//{
-//    Console.WriteLine(dr["BlogId"]);
-//    Console.WriteLine(dr["BlogTitle"]);
-//    Console.WriteLine(dr["BlogAuthot"]);
-//    Console.WriteLine(dr["BlogContent"]);
-
-
-//}
 
 Console.ReadKey();
 
