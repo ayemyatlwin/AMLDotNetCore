@@ -40,5 +40,24 @@ namespace AMLDotNetCore.ConsoleApp
 
         }
 
+        public void Edit(int id)
+        {
+            AppDbContext db = new AppDbContext();
+            var item = db.Blogs.FirstOrDefault(x => x.BlogId == id);
+
+            if (item is null)
+            {
+                Console.WriteLine("No Matching result...");
+                return;
+
+            }
+            Console.WriteLine(item.BlogId);
+            Console.WriteLine(item.BlogTitle);
+            Console.WriteLine(item.BlogAuthot);
+            Console.WriteLine(item.BlogContent);
+
+
+
+        }
     }
 }
