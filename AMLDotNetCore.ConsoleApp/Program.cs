@@ -45,7 +45,12 @@ DapperExample dapperExample= new DapperExample();
 //dapperExample.Edit(1011);
 //dapperExample.Edit(1012);
 //dapperExample.Update(1011, "Learning-Update", "AML", "Learing Content Update");
-dapperExample.Delete(1012);
+//dapperExample.Delete(1012);
+
+
+//EFCore-CRUD
+EFCoreExample efcoreExample = new EFCoreExample();
+efcoreExample.Read();
 
 
 
