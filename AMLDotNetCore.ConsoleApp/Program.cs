@@ -52,7 +52,9 @@ DapperExample dapperExample= new DapperExample();
 EFCoreExample efcoreExample = new EFCoreExample();
 //efcoreExample.Read();
 //efcoreExample.Create("Learning", "AML", "Learing Content");
-efcoreExample.Edit(1011);
+//efcoreExample.Edit(1011);
+efcoreExample.Update(4, "Learning-321", "AML-321", "Learing Content 321");
+
 
 
 

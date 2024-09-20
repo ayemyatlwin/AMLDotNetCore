@@ -59,5 +59,35 @@ namespace AMLDotNetCore.ConsoleApp
 
 
         }
+
+        public void Update(int id, string title, string author, string content)
+        {
+            AppDbContext db = new AppDbContext();
+            var item = db.Blogs.AsNoTracking().FirstOrDefault(x => x.BlogId == id);
+
+            if (item is null)
+            {
+                Console.WriteLine("No Matching result...");
+                return;
+
+            }
+            if (!string.IsNullOrEmpty(title))
+            {
+                item.BlogTitle = title;
+            }
+            if (!string.IsNullOrEmpty(author))
+            {
+                item.BlogAuthot = author;
+            }
+            if (!string.IsNullOrEmpty(content))
+            {
+                item.BlogContent = content;
+            }
+            db.Entry(item).State = EntityState.Modified;
+            var result = db.SaveChanges();
+            Console.WriteLine(result == 1 ? "Updated Data" : "Update Failed");
+
+
+        }
     }
 }
