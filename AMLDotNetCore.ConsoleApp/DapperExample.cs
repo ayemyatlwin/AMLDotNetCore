@@ -44,7 +44,33 @@ namespace AMLDotNetCore.ConsoleApp
             }
 
         }
+        public void Create(string title, string author, string content)
+        {
+            string query = $@"INSERT INTO [dbo].[Tbl_Blog]
+                    ([BlogTitle]
+                    ,[BlogAuthot]
+                    ,[BlogContent]
+                    ,[DeleteFlag])
+            VALUES
+                    (@BlogTitle
+                    ,@BlogAuthot
+                    ,@BlogContent
+                    ,0)";
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                int result = db.Execute(query, new BlogDapperDataModel
+                {
+                    BlogTitle = title,
+                    BlogAuthot = author,
+                    BlogContent = content,
 
-       
+                });
+                Console.WriteLine(result == 1 ? "Saving Successful." : "Saving Failed.");
+
+            }
+
+        }
+
+
     }
 }

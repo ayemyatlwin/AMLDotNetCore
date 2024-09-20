@@ -40,7 +40,8 @@ AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
 
 //Dapper-CRUD
 DapperExample dapperExample= new DapperExample();
-dapperExample.Read();
+//dapperExample.Read();
+dapperExample.Create("Learning", "AML", "Learing Content");
 
 
 
