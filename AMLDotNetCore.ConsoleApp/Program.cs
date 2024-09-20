@@ -50,7 +50,9 @@ DapperExample dapperExample= new DapperExample();
 
 //EFCore-CRUD
 EFCoreExample efcoreExample = new EFCoreExample();
-efcoreExample.Read();
+//efcoreExample.Read();
+efcoreExample.Create("Learning", "AML", "Learing Content");
+
 
 
 

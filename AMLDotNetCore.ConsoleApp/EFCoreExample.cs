@@ -23,6 +23,22 @@ namespace AMLDotNetCore.ConsoleApp
                 Console.WriteLine(item.BlogContent);
             }
         }
-       
+
+        public void Create(string title, string author, string content)
+        {
+            BlogDataModel blog = new BlogDataModel
+            {
+                BlogTitle = title,
+                BlogAuthot = author,
+                BlogContent = content,
+            };
+            AppDbContext db = new AppDbContext();
+            db.Blogs.Add(blog);
+            var result = db.SaveChanges();
+            Console.WriteLine(result == 1 ? "Saving Successful" : "Saving Failed");
+
+
+        }
+
     }
 }
