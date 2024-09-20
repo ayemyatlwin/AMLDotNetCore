@@ -120,6 +120,25 @@ namespace AMLDotNetCore.ConsoleApp
 
         }
 
+        public void Delete(int id)
+        {
+            string query = $@"UPDATE [dbo].[Tbl_Blog]
+                            SET [DeleteFlag] = 1
+                            WHERE BlogId = @BlogId";
+
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                int result = db.Execute(query, new BlogDapperDataModel
+                {
+                    BlogId = id
+                });
+                Console.WriteLine(result == 1 ? "Deleting Successful." : "Deleting Fail.");
+
+
+            }
+
+
+        }
 
     }
 }
