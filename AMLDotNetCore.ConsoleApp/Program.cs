@@ -29,12 +29,20 @@ Console.WriteLine("Hello, World!");
 
 // 101
 
+
+//AdoDotNet-CRUD
 AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
 //adoDotNetExample.Read();
 //adoDotNetExample.Create();
 //adoDotNetExample.Edit();
 //adoDotNetExample.Update();
-adoDotNetExample.Delete();
+//adoDotNetExample.Delete();
+
+//Dapper-CRUD
+DapperExample dapperExample= new DapperExample();
+dapperExample.Read();
+
+
 
 
 
