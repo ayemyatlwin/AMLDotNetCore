@@ -89,5 +89,43 @@ namespace AMLDotNetCore.ConsoleApp
 
 
         }
+
+
+        public void Delete(int id)
+        {
+            AppDbContext db = new AppDbContext();
+            var item = db.Blogs.AsNoTracking().FirstOrDefault(x => x.BlogId == id);
+
+            if (item is null)
+            {
+                Console.WriteLine("No Matching result...");
+                return;
+
+            }
+            db.Entry(item).State = EntityState.Deleted;
+            var result = db.SaveChanges();
+            Console.WriteLine(result == 1 ? "Deleted Data" : "Delete Failed");
+
+        }
+
+        // ---- by updating delete flag ------//
+
+        //public void Delete(int id)
+        //{
+        //    AppDbContext db = new AppDbContext();
+        //    var item = db.Blogs.AsNoTracking().FirstOrDefault(x => x.BlogId == id);
+
+        //    if (item is null)
+        //    {
+        //        Console.WriteLine("No Matching result...");
+        //        return;
+
+        //    }
+        //    item.DeleteFlag=true;
+        //    db.Entry(item).State = EntityState.Modified;
+        //    var result = db.SaveChanges();
+        //    Console.WriteLine(result == 1 ? "Deleted Data" : "Delete Failed");
+
+        //}
     }
 }
