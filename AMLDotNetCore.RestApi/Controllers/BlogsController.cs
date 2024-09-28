@@ -18,27 +18,87 @@ namespace AMLDotNetCore.RestApi.Controllers
             return Ok(new { message = "success",resqData=lst });
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetBlog(int id)
+        {
+            var item = _db.TblBlogs.AsNoTracking().FirstOrDefault(x=>x.BlogId==id);
+            if (item is null)
+            {
+                return NotFound();
+            }
+            return Ok(new { message = "success", resqData = item });
+        }
+
+
+
+
         [HttpPost]
-        public IActionResult CreateBlog()
+        public IActionResult CreateBlog(TblBlog blog) 
         {
+            _db.TblBlogs.Add(blog);
+            _db.SaveChanges();
             return Ok();
         }
 
-        [HttpPatch]
-        public IActionResult PatchBlog()
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateBlog(int id, TblBlog blog)
         {
-            return Ok();
+
+            var item = _db.TblBlogs.AsNoTracking().FirstOrDefault(x => x.BlogId == id);
+            if (item is null)
+            {
+                return NotFound();
+            }
+            item.BlogTitle=blog.BlogTitle;
+            item.BlogAuthot = blog.BlogAuthot;
+            item.BlogContent=blog.BlogContent;  
+
+            _db.Entry(item).State = EntityState.Modified;
+            _db.SaveChanges();
+
+
+            return Ok(new { message = "success", resqData = item });
         }
 
-        [HttpPut]
-        public IActionResult UpdateBlog()
+
+        [HttpPatch("{id}")]
+        public IActionResult PatchBlog(int id, TblBlog blog)
         {
-            return Ok();
+            var item = _db.TblBlogs.AsNoTracking().FirstOrDefault(x=>x.BlogId==id);
+            if (item is null) 
+            {
+                NotFound();
+            }
+            if(!string.IsNullOrEmpty(blog.BlogTitle))
+            {
+                item.BlogTitle = blog.BlogTitle;
+            }
+            if (!string.IsNullOrEmpty(blog.BlogAuthot)) 
+            {
+                item.BlogAuthot=blog.BlogAuthot;
+            }
+            if (!string.IsNullOrEmpty(blog.BlogContent))
+            {
+                item.BlogContent=blog.BlogContent;
+            }
+            _db.Entry(item).State=EntityState.Modified;
+            _db.SaveChanges();
+            return Ok(item);
         }
 
-        [HttpDelete]
-        public IActionResult DeleteBlog()
+        [HttpDelete ("{id}")]
+        public IActionResult DeleteBlog(int id)
         {
+            var item = _db.TblBlogs.AsNoTracking().FirstOrDefault(x => x.BlogId == id);
+            if(item is null)
+            {
+                NotFound();
+            }
+            item.DeleteFlag = true;
+            _db.Entry(item).State = EntityState.Modified;
+            //_db.Entry(item).State = EntityState.Deleted;
+            _db.SaveChanges();
             return Ok();
         }
     }
