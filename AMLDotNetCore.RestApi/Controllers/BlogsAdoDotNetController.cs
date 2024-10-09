@@ -47,6 +47,37 @@ namespace AMLDotNetCore.RestApi.Controllers
             return Ok(lst);
         }
 
+        [HttpPost]
+
+        public IActionResult CreateBlog( BlogViewModels model)
+        {
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+            string query = $@"INSERT INTO [dbo].[Tbl_Blog]
+                            ([BlogTitle]
+                            ,[BlogAuthot]
+                            ,[BlogContent]
+                            ,[DeleteFlag])
+                            VALUES
+                            (@BlogTitle
+                            ,@BlogAuthot
+                            ,@BlogContent
+                            ,0)";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@BlogTitle", model.Title);
+            cmd.Parameters.AddWithValue("@BlogAuthot", model.Author);
+            cmd.Parameters.AddWithValue("@BlogContent", model.Content);
+
+            int result = cmd.ExecuteNonQuery();
+
+            connection.Close();
+
+            string message = result > 0 ? "Saving Successful." : "Saving Failed.";
+
+            return Ok(message);
+        }
+
       
     }
 }
