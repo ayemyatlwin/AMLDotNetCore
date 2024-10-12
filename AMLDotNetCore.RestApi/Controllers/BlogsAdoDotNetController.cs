@@ -80,7 +80,7 @@ namespace AMLDotNetCore.RestApi.Controllers
         }
 
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
 
         public IActionResult GetBlogById(int id)
         {
@@ -121,7 +121,7 @@ namespace AMLDotNetCore.RestApi.Controllers
         }
 
 
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         public IActionResult UpdateBlog (int id ,BlogViewModels model)
         {
             SqlConnection connection = new SqlConnection(_connectionString);
@@ -149,7 +149,7 @@ namespace AMLDotNetCore.RestApi.Controllers
 
         }
 
-        [HttpPatch("id")]
+        [HttpPatch("{id}")]
 
         public IActionResult PatchBlog(int id , BlogViewModels blog)
         {
@@ -212,7 +212,7 @@ namespace AMLDotNetCore.RestApi.Controllers
 
         }
 
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
 
         public IActionResult DeletePost(int id)
         {
