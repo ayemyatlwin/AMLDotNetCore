@@ -152,6 +152,54 @@ namespace AMLDotNetCore.TaskManagementRestAPI.Controllers
 
         #endregion createTask
 
+        #region updateTask
+        [HttpPut("{id}")]
+        public IActionResult UpdateTask(int id, TasksDataModel model)
+        {
+            if (!TaskExists(id))
+            {
+                return NotFound("Task ID not found!");
+
+            }
+            if (!allowedStatusList.Contains(model.Status))
+            {
+                return BadRequest("Invalid task status.");
+            }
+            if (model.PriorityLevel < 1 || model.PriorityLevel > 5)
+            {
+                return BadRequest("Invalid priority level.It must be between 1 to 5.");
+            }
+            string query = @"
+                 UPDATE [dbo].[Tbl_ToDoList]
+                 SET 
+                     [TaskTitle] = @TaskTitle,
+                     [TaskDescription] = @TaskDescription,
+                     [CategoryID] = @CategoryID,
+                     [PriorityLevel] = @PriorityLevel,
+                     [Status] = @Status,
+                     [DueDate] = @DueDate,
+                     [CompletedDate] = CASE WHEN @Status = 'Completed' THEN @CompletedDate ELSE CompletedDate END,
+                     [DeleteFlag] = 0
+                 WHERE DeleteFlag = 0 AND TaskID = @TaskID;";
+
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                var result = db.Execute(query, new
+                {
+                    TaskID = id,
+                    TaskTitle = model.TaskTitle,
+                    TaskDescription = model.TaskDescription,
+                    CategoryID = model.CategoryID,
+                    PriorityLevel = model.PriorityLevel,
+                    Status = model.Status,
+                    DueDate = model.DueDate,
+                    CompletedDate = DateTime.Now,
+                });
+                string message = result == 1 ? "Task successfully updated!" : "Failed to update the task!";
+                return Ok(message);
+            }
+        }
+        #endregion updateTask
 
 
 
