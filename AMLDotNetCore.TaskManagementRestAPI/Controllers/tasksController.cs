@@ -62,7 +62,32 @@ namespace AMLDotNetCore.TaskManagementRestAPI.Controllers
 
         #endregion getAllTask
 
-       
+        #region getTaskDetail
+        [HttpGet("{id}")]
+
+        public IActionResult GetTaskDetail(int id)
+        {
+            if (!TaskExists(id))
+            {
+                return NotFound("Task ID not found!");
+
+            }
+            string query = @"SELECT * FROM [dbo].[Tbl_ToDoList] where DeleteFlag=0 AND TaskID=@TaskID;";
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                var item = db.Query(query, new TasksDataModel
+                { TaskID = id }).FirstOrDefault();
+                if (item is null)
+                {
+                    return BadRequest("There is no matching data...");
+                }
+                return Ok(item);
+            }
+        }
+
+        #endregion getTaskDetail
+
+
 
 
     }
