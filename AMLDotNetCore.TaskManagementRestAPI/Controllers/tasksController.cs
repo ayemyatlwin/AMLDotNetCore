@@ -87,6 +87,71 @@ namespace AMLDotNetCore.TaskManagementRestAPI.Controllers
 
         #endregion getTaskDetail
 
+        #region createTask
+        [HttpPost]
+        public IActionResult CreateTask(TasksDataModel model)
+        {
+            if (string.IsNullOrEmpty(model.Status))
+            {
+                model.Status = "Pending";
+            }
+            else
+            {
+                if (!allowedStatusList.Contains(model.Status))
+                {
+                    return BadRequest("Invalid task status.");
+                }
+            }
+            if (model.PriorityLevel < 1 || model.PriorityLevel > 5)
+            {
+                return BadRequest("Invalid priority level.It must be between 1 to 5.");
+            }
+            DateTime? completedDate = null;
+            if (model.Status == "Completed")
+            {
+                completedDate = DateTime.Now;
+            }
+            string query = @" INSERT INTO [dbo].[Tbl_ToDoList]
+                     ([TaskTitle],
+                        [TaskDescription],
+                        [CategoryID],
+                        [PriorityLevel],
+                        [Status],
+                        [DueDate],
+                        [CreatedDate],
+                        [CompletedDate],
+                        [DeleteFlag])
+                     VALUES
+                           (@TaskTitle,
+                            @TaskDescription,
+                            @CategoryID,
+                            @PriorityLevel,
+                            @Status,
+                            @DueDate,
+                            GETDATE(),         
+                            @CompletedDate,    
+                            0)";
+
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                int result = db.Execute(query, new
+                {
+                    model.TaskTitle,
+                    model.TaskDescription,
+                    model.CategoryID,
+                    model.PriorityLevel,
+                    model.Status,
+                    model.DueDate,
+                    CompletedDate = completedDate
+                });
+
+                string message = result == 1 ? "Task successfully created!" : "Failed to create task!";
+                return Ok(message);
+            }
+        }
+
+        #endregion createTask
+
 
 
 
