@@ -201,6 +201,33 @@ namespace AMLDotNetCore.TaskManagementRestAPI.Controllers
         }
         #endregion updateTask
 
+        #region deleteTask
+        [HttpDelete("{id}")]
+
+        public IActionResult deleteTask(int id)
+        {
+            if (!TaskExists(id))
+            {
+                return NotFound("Task ID not found!");
+            }
+            string query = @"UPDATE [dbo].[Tbl_ToDoList]
+                     SET [DeleteFlag] = 1
+                     WHERE TaskID = @TaskID";
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                int result = db.Execute(query, new TasksDataModel
+                {
+                    TaskID = id
+                });
+
+                string message = result == 1 ? "Successfully deleted a task!" : "Failed to delete!.";
+                return Ok(message);
+            }
+
+        }
+
+        #endregion deletetTask
+
 
 
     }
