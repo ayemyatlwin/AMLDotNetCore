@@ -25,6 +25,15 @@ namespace AMLDotNetCore.TaskManagementRestAPI.Controllers
             }
         }
 
+        private bool CategoryExists(int categoryId)
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                string query = @"SELECT COUNT(*) FROM Tbl_TaskCategory WHERE CategoryID = @CategoryID";
+                return db.ExecuteScalar<int>(query, new { CategoryID = categoryId }) > 0;
+            }
+        }
+
         #region getAllTask
         [HttpGet]
         public IActionResult GetTaskList()
@@ -91,6 +100,10 @@ namespace AMLDotNetCore.TaskManagementRestAPI.Controllers
         [HttpPost]
         public IActionResult CreateTask(TasksDataModel model)
         {
+            if (!CategoryExists(model.CategoryID))
+            {
+                return BadRequest("Invalid category ID.");
+            }
             if (string.IsNullOrEmpty(model.Status))
             {
                 model.Status = "Pending";
@@ -106,6 +119,7 @@ namespace AMLDotNetCore.TaskManagementRestAPI.Controllers
             {
                 return BadRequest("Invalid priority level.It must be between 1 to 5.");
             }
+
             DateTime? completedDate = null;
             if (model.Status == "Completed")
             {
@@ -156,6 +170,10 @@ namespace AMLDotNetCore.TaskManagementRestAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateTask(int id, TasksDataModel model)
         {
+            if (!CategoryExists(model.CategoryID))
+            {
+                return BadRequest("Invalid category ID.");
+            }
             if (!TaskExists(id))
             {
                 return NotFound("Task ID not found!");
