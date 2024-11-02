@@ -3,6 +3,8 @@ using System.Data;
 using System.Data.SqlClient;
 
 Console.WriteLine("Hello, World!");
+Console.WriteLine("--------------------------------------------------");
+
 //Console.ReadLine();
 
 
@@ -54,7 +56,15 @@ EFCoreExample efcoreExample = new EFCoreExample();
 //efcoreExample.Create("Learning", "AML", "Learing Content");
 //efcoreExample.Edit(1011);
 //efcoreExample.Update(4, "Learning-321", "AML-321", "Learing Content 321");
-efcoreExample.Delete(2);
+//efcoreExample.Delete(2);
+
+
+AdoDotNetExample2 adoDotNetExample2 = new AdoDotNetExample2();
+//adoDotNetExample2.Read();
+//adoDotNetExample2.Edit();
+adoDotNetExample2.Delete();
+//adoDotNetExample2.Update();
+
 
 
 

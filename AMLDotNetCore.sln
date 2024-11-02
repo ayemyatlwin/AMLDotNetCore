@@ -16,7 +16,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.ConsoleApp2",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.RestApi", "AMLDotNetCore.RestApi\AMLDotNetCore.RestApi.csproj", "{994B821A-9B56-4C4E-9514-1491FA1666E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMLDotNetCore.TaskManagementRestAPI", "AMLDotNetCore.TaskManagementRestAPI\AMLDotNetCore.TaskManagementRestAPI.csproj", "{FABBF0A5-6504-4F3A-830A-B42C22BD716D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.TaskManagementRestAPI", "AMLDotNetCore.TaskManagementRestAPI\AMLDotNetCore.TaskManagementRestAPI.csproj", "{FABBF0A5-6504-4F3A-830A-B42C22BD716D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMLDotNetCore.Shared", "AMLDotNetCore.Shared\AMLDotNetCore.Shared.csproj", "{C8F82181-1848-4B34-9454-AA3460B74C42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{FABBF0A5-6504-4F3A-830A-B42C22BD716D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FABBF0A5-6504-4F3A-830A-B42C22BD716D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FABBF0A5-6504-4F3A-830A-B42C22BD716D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8F82181-1848-4B34-9454-AA3460B74C42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8F82181-1848-4B34-9454-AA3460B74C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8F82181-1848-4B34-9454-AA3460B74C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8F82181-1848-4B34-9454-AA3460B74C42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
