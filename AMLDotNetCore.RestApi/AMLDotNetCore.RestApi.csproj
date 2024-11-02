@@ -16,6 +16,8 @@
   <ItemGroup>
 	  
     <ProjectReference Include="..\AMLDotNetCore.DataBase\AMLDotNetCore.DataBase.csproj" />
+	  
+    <ProjectReference Include="..\AMLDotNetCore.Shared\AMLDotNetCore.Shared.csproj" />
   </ItemGroup>
 
 </Project>
