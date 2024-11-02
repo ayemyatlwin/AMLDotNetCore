@@ -62,8 +62,16 @@ EFCoreExample efcoreExample = new EFCoreExample();
 AdoDotNetExample2 adoDotNetExample2 = new AdoDotNetExample2();
 //adoDotNetExample2.Read();
 //adoDotNetExample2.Edit();
-adoDotNetExample2.Delete();
+//adoDotNetExample2.Create();
+//adoDotNetExample2.Delete();
 //adoDotNetExample2.Update();
+
+DapperExample2 dapperExample2 = new DapperExample2();
+//dapperExample2.Read();
+//dapperExample2.Edit(1019);
+//dapperExample2.Create("Lion King", "Simba", "I am the real lion king.");
+//dapperExample2.Update(1019, "This is title", "This is author", "This is content");
+//dapperExample2.Delete(1019);
 
 
 
