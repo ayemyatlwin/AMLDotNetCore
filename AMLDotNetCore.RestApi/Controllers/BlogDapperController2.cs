@@ -23,14 +23,14 @@ namespace AMLDotNetCore.RestApi.Controllers
         private bool BlogExists(int id)
         {
                 string query = @"SELECT * FROM tbl_blog WHERE DeleteFlag = 0 AND BlogId = @BlogId";
-                var blog = _dapperService.Query<BlogDataModel>(query, new { BlogId = id }).FirstOrDefault();
+                var blog = _dapperService.Query<BlogDataModel>(query, new { BlogId = id });
                 return blog != null;
         }
         [HttpGet]
         public IActionResult GetBlogs()
         {
             string query = "select * from tbl_blog where DeleteFlag = 0;";
-            List<BlogDataModel> lst = _dapperService.Query<BlogDataModel>(query).ToList();
+            List<BlogDataModel> lst = _dapperService.Query<BlogDataModel>(query);
             return Ok(lst);
         }
 
@@ -47,7 +47,7 @@ namespace AMLDotNetCore.RestApi.Controllers
             var item = _dapperService.Query<BlogDataModel>(query, new BlogDataModel
             {
                 BlogId = id
-            }).FirstOrDefault();
+            });
 
             if (item is null)
             {
