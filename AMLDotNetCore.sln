@@ -18,7 +18,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.RestApi", "AM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.TaskManagementRestAPI", "AMLDotNetCore.TaskManagementRestAPI\AMLDotNetCore.TaskManagementRestAPI.csproj", "{FABBF0A5-6504-4F3A-830A-B42C22BD716D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMLDotNetCore.Shared", "AMLDotNetCore.Shared\AMLDotNetCore.Shared.csproj", "{C8F82181-1848-4B34-9454-AA3460B74C42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.Shared", "AMLDotNetCore.Shared\AMLDotNetCore.Shared.csproj", "{C8F82181-1848-4B34-9454-AA3460B74C42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMLDotNetCore.MinimalApi", "AMLDotNetCore.MinimalApi\AMLDotNetCore.MinimalApi.csproj", "{3699CD25-03AE-4681-8C7B-83E866AD5F22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +52,10 @@ Global
 		{C8F82181-1848-4B34-9454-AA3460B74C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8F82181-1848-4B34-9454-AA3460B74C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8F82181-1848-4B34-9454-AA3460B74C42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3699CD25-03AE-4681-8C7B-83E866AD5F22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3699CD25-03AE-4681-8C7B-83E866AD5F22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3699CD25-03AE-4681-8C7B-83E866AD5F22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3699CD25-03AE-4681-8C7B-83E866AD5F22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
