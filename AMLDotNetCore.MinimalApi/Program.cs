@@ -16,6 +16,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 
-app.useBlogEndPoint();
+//app.useBlogEndPoint();
+
+app.useBlogServiceEndPoint();
 
 app.Run();
