@@ -22,7 +22,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.Shared", "AML
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.MinimalApi", "AMLDotNetCore.MinimalApi\AMLDotNetCore.MinimalApi.csproj", "{3699CD25-03AE-4681-8C7B-83E866AD5F22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMLDotNetCore.BirdMinimalApi", "AMLDotNetCore.BirdMinimalApi\AMLDotNetCore.BirdMinimalApi.csproj", "{C911C61D-06C3-46A1-86A8-7E70E3A741B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.BirdMinimalApi", "AMLDotNetCore.BirdMinimalApi\AMLDotNetCore.BirdMinimalApi.csproj", "{C911C61D-06C3-46A1-86A8-7E70E3A741B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMLDotNetCore.Domain", "AMLDotNetCore.Domain\AMLDotNetCore.Domain.csproj", "{CF83697B-043C-4897-992C-FEDAFBBC4B44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +64,10 @@ Global
 		{C911C61D-06C3-46A1-86A8-7E70E3A741B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C911C61D-06C3-46A1-86A8-7E70E3A741B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C911C61D-06C3-46A1-86A8-7E70E3A741B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF83697B-043C-4897-992C-FEDAFBBC4B44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF83697B-043C-4897-992C-FEDAFBBC4B44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF83697B-043C-4897-992C-FEDAFBBC4B44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF83697B-043C-4897-992C-FEDAFBBC4B44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

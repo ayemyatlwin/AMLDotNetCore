@@ -17,6 +17,8 @@
 	  
     <ProjectReference Include="..\AMLDotNetCore.DataBase\AMLDotNetCore.DataBase.csproj" />
 	  
+    <ProjectReference Include="..\AMLDotNetCore.Domain\AMLDotNetCore.Domain.csproj" />
+	  
     <ProjectReference Include="..\AMLDotNetCore.Shared\AMLDotNetCore.Shared.csproj" />
   </ItemGroup>
 
