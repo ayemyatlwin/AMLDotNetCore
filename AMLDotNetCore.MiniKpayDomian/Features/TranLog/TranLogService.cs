@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Model;
@@ -21,6 +22,24 @@ namespace AMLDotNetCore.MiniKpayDomian.Features.TranLog
             _validation = new TransferServiceValidation();
         }
 
+        public List<TblTranLog> GetTransactionsHistory()
+        {
+            var model = _db.TblTranLogs.AsNoTracking().ToList();
+            return model;
+
+        }
+
+        public object GetTransactionsHistoryById(int id)
+        {
+            var validation = _validation.GetTranHistoryValidation(id);
+            if (!validation.IsSuccess)
+            {
+                return validation.Message;
+            }
+            var item = _db.TblTranLogs.AsNoTracking().FirstOrDefault(x => x.TransactionId == id);
+            return item;
+        }
+
         public object CreateTransfer(string fromMobileNo, string toMobileNo, string amount, string pin, string? note)
         {
             var time = DateTime.Now;
@@ -35,10 +54,6 @@ namespace AMLDotNetCore.MiniKpayDomian.Features.TranLog
 
             var fromModel = _db.TblUsers.AsNoTracking().FirstOrDefault(x => x.MobileNo == fromMobileNo);
             var toModel = _db.TblUsers.AsNoTracking().FirstOrDefault(x => x.MobileNo == toMobileNo);
-
-            
-
-           
 
             fromModel.Balance -= Int32.Parse(amount);
 

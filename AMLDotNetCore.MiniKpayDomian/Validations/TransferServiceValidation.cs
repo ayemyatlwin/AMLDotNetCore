@@ -12,6 +12,27 @@ namespace AMLDotNetCore.MiniKpayDomian.Validations
     {
         private readonly AppDbContext _db = new AppDbContext();
 
+
+        public ValidationResult GetTranHistoryValidation(int id)
+        {
+            var model = _db.TblTranLogs.AsNoTracking().FirstOrDefault(x => x.TransactionId == id);
+
+            if (model == null)
+            {
+                return new ValidationResult
+                {
+                    IsSuccess = false,
+                    Message = "Transaction Not Found!"
+                };
+            }
+
+            return new ValidationResult
+            {
+                IsSuccess = true,
+            };
+        }
+
+
         public ValidationResult TransferValiation(string fromMobileNo, string toMobileNo, string amount, string pin)
         {
             var fromModel = _db.TblUsers.AsNoTracking().FirstOrDefault(x => x.MobileNo == fromMobileNo);
