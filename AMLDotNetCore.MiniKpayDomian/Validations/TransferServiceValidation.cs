@@ -27,7 +27,7 @@ namespace AMLDotNetCore.MiniKpayDomian.Validations
                 };
             }
 
-            if (Int32.Parse(fromModel.Balance) < Int32.Parse(amount))
+            if (fromModel.Balance < Int32.Parse(amount))
             {
                 return new ValidationResult
                 {
@@ -36,7 +36,7 @@ namespace AMLDotNetCore.MiniKpayDomian.Validations
                 };
             }
 
-            if (10000 >= Int32.Parse(fromModel.Balance) - Int32.Parse(amount))
+            if (10000 >= fromModel.Balance - Int32.Parse(amount))
             {
                 return new ValidationResult
                 {

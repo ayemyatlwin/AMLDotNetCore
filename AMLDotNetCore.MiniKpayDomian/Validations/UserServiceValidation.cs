@@ -112,7 +112,7 @@ namespace AMLDotNetCore.MiniKpayDomian.Validations
                         Message = "User Not Found!"
                     };
                 }
-                if (10000 >= Int32.Parse(model.Balance) - Int32.Parse(amount))
+                if (10000 >= model.Balance - Int32.Parse(amount))
                 {
                     return new ValidationResult
                     {

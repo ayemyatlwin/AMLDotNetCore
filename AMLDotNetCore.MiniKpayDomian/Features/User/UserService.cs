@@ -63,18 +63,8 @@ namespace AMLDotNetCore.MiniKpayDomian.Features.User
             }
             var model = _db.TblUsers.AsNoTracking().FirstOrDefault(x=>x.MobileNo== mobileNo);
 
-            if (!int.TryParse(model.Balance, out int currentBalance))
-            {
-                return "Invalid balance.";
-            }
+            model.Balance += Int32.Parse(Amount);
 
-            if (!float.TryParse(Amount, out float depositAmount))
-            {
-                return "Invalid amount.";
-            }
-
-            currentBalance += (int)depositAmount;
-            model.Balance = currentBalance.ToString();
             _db.TblUsers.Update(model);
             _db.SaveChanges();
             return model;
@@ -91,18 +81,8 @@ namespace AMLDotNetCore.MiniKpayDomian.Features.User
             }
             var model = _db.TblUsers.AsNoTracking().FirstOrDefault(x => x.MobileNo == mobileNo);
 
-            if (!int.TryParse(model.Balance, out int currentBalance))
-            {
-                return "Invalid balance.";
-            }
+            model.Balance -= Int32.Parse(Amount);
 
-            if (!float.TryParse(Amount, out float withDrawAmount))
-            {
-                return "Invalid amount.";
-            }
-
-            currentBalance -= (int)withDrawAmount;
-            model.Balance = currentBalance.ToString();
             _db.TblUsers.Update(model);
             _db.SaveChanges();
             return model;

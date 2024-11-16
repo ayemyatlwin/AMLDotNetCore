@@ -36,26 +36,13 @@ namespace AMLDotNetCore.MiniKpayDomian.Features.TranLog
             var fromModel = _db.TblUsers.AsNoTracking().FirstOrDefault(x => x.MobileNo == fromMobileNo);
             var toModel = _db.TblUsers.AsNoTracking().FirstOrDefault(x => x.MobileNo == toMobileNo);
 
-            if (!int.TryParse(fromModel.Balance, out int transferorBalance))
-            {
-                return "Invalid balance.";
-            }
+            
 
-            if (!float.TryParse(toModel.Balance, out float recipientBalance))
-            {
-                return "Invalid balance.";
-            }
+           
 
-            if (!float.TryParse(amount, out float transferAmount))
-            {
-                return "Invalid amount.";
-            }
+            fromModel.Balance -= Int32.Parse(amount);
 
-            transferorBalance -= (int)transferAmount;
-            fromModel.Balance = transferorBalance.ToString();
-
-            recipientBalance += (int)transferAmount;
-            toModel.Balance = recipientBalance.ToString();
+            toModel.Balance += Int32.Parse(amount);
 
 
             _db.TblUsers.Update(fromModel);
@@ -65,7 +52,7 @@ namespace AMLDotNetCore.MiniKpayDomian.Features.TranLog
             TblTranLog tranLog = new TblTranLog();
             tranLog.FromMobileNo = fromMobileNo;
             tranLog.ToMobileNo = toMobileNo;
-            tranLog.Amount = amount;
+            tranLog.Amount = Int32.Parse(amount);
             tranLog.Note = note;
             tranLog.Time = currentTimeAsString;
 

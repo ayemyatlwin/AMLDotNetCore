@@ -11,7 +11,7 @@ public partial class TblUser
 
     public string MobileNo { get; set; } = null!;
 
-    public string Balance { get; set; } = null!;
+    public decimal Balance { get; set; }
 
     public string PinCode { get; set; } = null!;
 
