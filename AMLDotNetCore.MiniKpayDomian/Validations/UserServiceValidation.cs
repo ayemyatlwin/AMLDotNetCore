@@ -52,7 +52,6 @@ namespace AMLDotNetCore.MiniKpayDomian.Validations
                 };
             }
 
-
             public ValidationResult GetBalanceValidation(string mobileNo)
             {
                 var model = _db.TblUsers.AsNoTracking().FirstOrDefault(x => x.MobileNo == mobileNo);

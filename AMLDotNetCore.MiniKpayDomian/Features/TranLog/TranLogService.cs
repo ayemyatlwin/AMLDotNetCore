@@ -25,6 +25,7 @@ namespace AMLDotNetCore.MiniKpayDomian.Features.TranLog
         {
             var time = DateTime.Now;
             string currentTimeAsString = time.ToString();
+
             var validation = _validation.TransferValiation(fromMobileNo, toMobileNo, amount, pin);
 
             if (!validation.IsSuccess)
@@ -37,17 +38,17 @@ namespace AMLDotNetCore.MiniKpayDomian.Features.TranLog
 
             if (!int.TryParse(fromModel.Balance, out int transferorBalance))
             {
-                return "Invalid balance format in database.";
+                return "Invalid balance.";
             }
 
             if (!float.TryParse(toModel.Balance, out float recipientBalance))
             {
-                return "Invalid deposit amount format.";
+                return "Invalid balance.";
             }
 
             if (!float.TryParse(amount, out float transferAmount))
             {
-                return "Invalid deposit amount format.";
+                return "Invalid amount.";
             }
 
             transferorBalance -= (int)transferAmount;

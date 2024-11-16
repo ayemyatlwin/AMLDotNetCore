@@ -20,12 +20,9 @@ namespace AMLDotNetCore.MiniKpayDomian.Features.User
             _validation = new UserServiceValidation.UserValidation();
         }
 
-
-
-
         public object ChangePin(string mobileNo, string pin)
         {
-            var validation = _validation.ChangePinValidation(mobileNo,pin);
+            var validation = _validation.ChangePinValidation(mobileNo, pin);
 
             if (!validation.IsSuccess)
             {
@@ -40,8 +37,6 @@ namespace AMLDotNetCore.MiniKpayDomian.Features.User
             return model;
 
         }
-
-
 
         public object GetBalance(string mobileNo)
         {
@@ -70,12 +65,12 @@ namespace AMLDotNetCore.MiniKpayDomian.Features.User
 
             if (!int.TryParse(model.Balance, out int currentBalance))
             {
-                return "Invalid balance format in database.";
+                return "Invalid balance.";
             }
 
             if (!float.TryParse(Amount, out float depositAmount))
             {
-                return "Invalid deposit amount format.";
+                return "Invalid amount.";
             }
 
             currentBalance += (int)depositAmount;
@@ -98,12 +93,12 @@ namespace AMLDotNetCore.MiniKpayDomian.Features.User
 
             if (!int.TryParse(model.Balance, out int currentBalance))
             {
-                return "Invalid balance format in database.";
+                return "Invalid balance.";
             }
 
             if (!float.TryParse(Amount, out float withDrawAmount))
             {
-                return "Invalid deposit amount format.";
+                return "Invalid amount.";
             }
 
             currentBalance -= (int)withDrawAmount;
@@ -112,6 +107,8 @@ namespace AMLDotNetCore.MiniKpayDomian.Features.User
             _db.SaveChanges();
             return model;
         }
+
+
 
 
     }
