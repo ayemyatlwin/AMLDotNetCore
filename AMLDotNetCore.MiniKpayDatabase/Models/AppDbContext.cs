@@ -37,7 +37,7 @@ public partial class AppDbContext : DbContext
 
             entity.ToTable("Tbl_TranLog");
 
-            entity.Property(e => e.Amunt).HasMaxLength(50);
+            entity.Property(e => e.Amount).HasMaxLength(50);
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");

@@ -11,7 +11,7 @@ public partial class TblTranLog
 
     public string ToMobileNo { get; set; } = null!;
 
-    public string Amunt { get; set; } = null!;
+    public string Amount { get; set; } = null!;
 
     public string? Note { get; set; }
 
