@@ -34,9 +34,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.MiniKpayDomia
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.MiniDigitalWallet.Database", "AMLDotNetCore.MiniDigitalWallet.Database\AMLDotNetCore.MiniDigitalWallet.Database.csproj", "{53BE12C0-A619-42A4-A172-14DFF6FAD179}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMLDotNetCore.MiniDigitalWallet.Api", "AMLDotNetCore.MiniDigitalWallet.Api\AMLDotNetCore.MiniDigitalWallet.Api.csproj", "{C9E0A684-BF87-474D-909D-FF5E84433F92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.MiniDigitalWallet.Api", "AMLDotNetCore.MiniDigitalWallet.Api\AMLDotNetCore.MiniDigitalWallet.Api.csproj", "{C9E0A684-BF87-474D-909D-FF5E84433F92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMLDotNetCore.MiniDigitalWallet.Domain", "AMLDotNetCore.MiniDigitalWallet.Domain\AMLDotNetCore.MiniDigitalWallet.Domain.csproj", "{4244C4B0-A69D-4C0E-883A-AF8DF9B16CA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.MiniDigitalWallet.Domain", "AMLDotNetCore.MiniDigitalWallet.Domain\AMLDotNetCore.MiniDigitalWallet.Domain.csproj", "{4244C4B0-A69D-4C0E-883A-AF8DF9B16CA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMLDotNetCore.ConsoleApp3", "AMLDotNetCore.ConsoleApp3\AMLDotNetCore.ConsoleApp3.csproj", "{EFBBEC1B-C278-4D93-99D6-6640B78EE7CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -104,6 +106,10 @@ Global
 		{4244C4B0-A69D-4C0E-883A-AF8DF9B16CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4244C4B0-A69D-4C0E-883A-AF8DF9B16CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4244C4B0-A69D-4C0E-883A-AF8DF9B16CA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFBBEC1B-C278-4D93-99D6-6640B78EE7CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFBBEC1B-C278-4D93-99D6-6640B78EE7CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFBBEC1B-C278-4D93-99D6-6640B78EE7CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFBBEC1B-C278-4D93-99D6-6640B78EE7CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
