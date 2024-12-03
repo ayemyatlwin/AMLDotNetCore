@@ -12,7 +12,13 @@ namespace AMLDotNetCore.RestApi.Controllers
     [ApiController]
     public class BlogsAdoDotNetController2 : ControllerBase
     {
-        private readonly string _connectionString = "Data Source=.;Initial Catalog=BlogManagementDatabase;User ID=sa;Password=sasa@123;TrustServerCertificate=True;";
+        private readonly string _connectionString;
+
+        public BlogsAdoDotNetController2(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("DbConnection")!;
+        }
+
         private readonly AdoDotNetService _adoDotNetService;
 
         public BlogsAdoDotNetController2()

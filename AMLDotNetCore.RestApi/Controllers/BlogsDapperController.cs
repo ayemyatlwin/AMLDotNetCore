@@ -16,7 +16,12 @@ namespace AMLDotNetCore.RestApi.Controllers
     [ApiController]
     public class BlogsDapperController : ControllerBase
     {
-        public readonly string _connectionString = "Data Source=.;Initial Catalog=BlogManagementDatabase;User ID=sa;Password=sasa@123;TrustServerCertificate=True;";
+        public readonly string _connectionString;
+
+        public BlogsDapperController(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("DbConnection")!;
+        }
 
         private bool BlogExists(int id)
         {
