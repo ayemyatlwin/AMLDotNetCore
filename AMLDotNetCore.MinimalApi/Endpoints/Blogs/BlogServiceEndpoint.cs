@@ -1,4 +1,5 @@
 ﻿using AMLDotNetCore.Domain.Features.Blog;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AMLDotNetCore.MinimalApi.Endpoints.Blogs;
 
@@ -7,19 +8,17 @@ public static class BlogServiceEndpoint
 
     public static void useBlogServiceEndPoint( this IEndpointRouteBuilder app)
     {
-        app.MapGet("/blogs", () =>
+        app.MapGet("/blogs", ([FromServices] IBlogService blogService) =>
         {
-            BlogService blogService = new BlogService();
             var lst = blogService.GetBlogs();
             return Results.Ok(lst);
         })
         .WithName("GetBlogs")
         .WithOpenApi();
 
-        app.MapGet("/blogs/{id}", (int id) =>
+        app.MapGet("/blogs/{id}", ([FromServices] IBlogService blogService,int id) =>
         {
 
-            BlogService blogService = new BlogService();
             var item = blogService.GetById(id);
             if (item is null)
             {
@@ -31,10 +30,9 @@ public static class BlogServiceEndpoint
         .WithOpenApi();
 
 
-        app.MapPost("/blogs", (TblBlog blog) =>
+        app.MapPost("/blogs", ([FromServices] IBlogService blogService,TblBlog blog) =>
         {
 
-            BlogService blogService = new BlogService();
             var item = blogService.CreateBlog(blog);
             return Results.Ok(blog);
         })
@@ -42,20 +40,18 @@ public static class BlogServiceEndpoint
         .WithOpenApi();
 
 
-        app.MapPut("/blogs/{id}", (int id, TblBlog blog) =>
+        app.MapPut("/blogs/{id}", ([FromServices] IBlogService blogService,int id, TblBlog blog) =>
         {
 
-            BlogService blogService = new BlogService();
             var item = blogService.UpdateBlog(id, blog);
             return Results.Ok(blog);
         })
         .WithName("EditBlog")
         .WithOpenApi();
 
-        app.MapDelete("/blogs/{id}", (int id) =>
+        app.MapDelete("/blogs/{id}", ([FromServices] IBlogService blogService,int id) =>
         {
 
-            BlogService blogService = new BlogService();
             var result = blogService.DeleteBlog(id);
             return Results.Ok(result);
         })
