@@ -5,7 +5,14 @@ Console.WriteLine("Hello, World!");
 
 HttpClientExample example = new HttpClientExample();
 //await example.ReadAsync();
-//await example.EditAsync(1);
-//await example.CreateAsync( 1, " title", "testing body");
-//await example.updateAsync(1, 1, " title", "testing body");
+//await example.EditAsync(101);
+//await example.CreateAsync(1, " title", "testing body");
+//await example.updateAsync(1, 1, " title edit ", "testing body edit");
 //await example.deleteAsync(3);
+
+RestClientExample restClientExample = new RestClientExample();
+//await restClientExample.ReadAsync();
+//await restClientExample.CreateAsync(1, " title", "testing body");
+await restClientExample.EditAsync(10);
+//await restClientExample.updateAsync(1, 1, " title edit ", "testing body edit");
+//await restClientExample.deleteAsync(3);
