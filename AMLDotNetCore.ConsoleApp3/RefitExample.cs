@@ -11,11 +11,12 @@ namespace AMLDotNetCore.ConsoleApp3
     {
         public async Task Run()
         {
-            var blogApi= RestService.For<IBlogApi>("https://localhost:7083");
+            var blogApi = RestService.For<IBlogApi>("https://localhost:7083");
             var model = await blogApi.GetBlogs();
             foreach (var blog in model)
             {
                 Console.WriteLine("------------------------");
+                Console.WriteLine(blog.BlogId);
                 Console.WriteLine(blog.BlogTitle);
                 Console.WriteLine(blog.BlogContent);
                 Console.WriteLine(blog.BlogAuthot);
@@ -37,13 +38,13 @@ namespace AMLDotNetCore.ConsoleApp3
 
             var createBlog = await blogApi.CreateBlog(new BlogModel
             {
-                BlogAuthot  ="Peter",
-                BlogContent="Refit Example Content",
-                BlogTitle="Refit",
-                DeleteFlag=false,
+                BlogAuthot = "Peter",
+                BlogContent = "Refit Example Content",
+                BlogTitle = "Refit",
+                DeleteFlag = false,
             });
 
-            var updateBlog = await blogApi.UpdateBlog(2,new BlogModel
+            var updateBlog = await blogApi.UpdateBlog(4,new BlogModel
             {
                 BlogAuthot = "Julia",
                 BlogContent = "Updated Content",
@@ -51,7 +52,7 @@ namespace AMLDotNetCore.ConsoleApp3
                 DeleteFlag = false,
             });
 
-            var deleteBlog = await blogApi.DeleteBlog(2);
+            var deleteBlog = await blogApi.DeleteBlog(2029);
         }
     }
 }

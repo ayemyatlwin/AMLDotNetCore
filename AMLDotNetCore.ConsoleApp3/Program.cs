@@ -17,6 +17,10 @@ Console.WriteLine("Hello, World!");
 //await restClientExample.updateAsync(1, 1, " title edit ", "testing body edit");
 //await restClientExample.deleteAsync(3);
 
+Console.Write("waiting for api...");
+Console.ReadLine();
 
 RefitExample refitExample = new RefitExample();
 await refitExample.Run();
+
+Console.ReadLine();

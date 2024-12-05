@@ -21,7 +21,7 @@ namespace AMLDotNetCore.RestApi.Controllers
         {
             var lst = _db.TblBlogs.AsNoTracking().ToList();
             //var lst = _db.TblBlogs.AsNoTracking().ToList().Where(x => x.DeleteFlag == false);
-            return Ok(new { message = "success",resqData=lst });
+            return Ok(lst);
         }
 
         [HttpGet("{id}")]
@@ -32,7 +32,7 @@ namespace AMLDotNetCore.RestApi.Controllers
             {
                 return NotFound();
             }
-            return Ok(new { message = "success", resqData = item });
+            return Ok(item);
         }
 
 
@@ -43,7 +43,7 @@ namespace AMLDotNetCore.RestApi.Controllers
         {
             _db.TblBlogs.Add(blog);
             _db.SaveChanges();
-            return Ok();
+            return Ok(blog);
         }
 
 
@@ -64,7 +64,7 @@ namespace AMLDotNetCore.RestApi.Controllers
             _db.SaveChanges();
 
 
-            return Ok(new { message = "success", resqData = item });
+            return Ok(item);
         }
 
 
@@ -105,7 +105,7 @@ namespace AMLDotNetCore.RestApi.Controllers
             _db.Entry(item).State = EntityState.Modified;
             //_db.Entry(item).State = EntityState.Deleted;
             _db.SaveChanges();
-            return Ok();
+            return Ok(item);
         }
     }
 }
