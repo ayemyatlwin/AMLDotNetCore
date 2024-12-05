@@ -1,4 +1,5 @@
 ﻿using AMLDotNetCore.ConsoleApp;
+using Microsoft.Extensions.DependencyInjection;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -33,7 +34,7 @@ Console.WriteLine("--------------------------------------------------");
 
 
 //AdoDotNet-CRUD
-AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
+//AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
 //adoDotNetExample.Read();
 //adoDotNetExample.Create();
 //adoDotNetExample.Edit();
@@ -41,7 +42,7 @@ AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
 //adoDotNetExample.Delete();
 
 //Dapper-CRUD
-DapperExample dapperExample= new DapperExample();
+//DapperExample dapperExample= new DapperExample();
 //dapperExample.Read();
 //dapperExample.Create("Learning", "AML", "Learing Content");
 //dapperExample.Edit(1011);
@@ -51,7 +52,7 @@ DapperExample dapperExample= new DapperExample();
 
 
 //EFCore-CRUD
-EFCoreExample efcoreExample = new EFCoreExample();
+//EFCoreExample efcoreExample = new EFCoreExample();
 //efcoreExample.Read();
 //efcoreExample.Create("Learning", "AML", "Learing Content");
 //efcoreExample.Edit(1011);
@@ -59,14 +60,14 @@ EFCoreExample efcoreExample = new EFCoreExample();
 //efcoreExample.Delete(2);
 
 
-AdoDotNetExample2 adoDotNetExample2 = new AdoDotNetExample2();
+//AdoDotNetExample2 adoDotNetExample2 = new AdoDotNetExample2();
 //adoDotNetExample2.Read();
 //adoDotNetExample2.Edit();
 //adoDotNetExample2.Create();
 //adoDotNetExample2.Delete();
 //adoDotNetExample2.Update();
 
-DapperExample2 dapperExample2 = new DapperExample2();
+//DapperExample2 dapperExample2 = new DapperExample2();
 //dapperExample2.Read();
 //dapperExample2.Edit(1019);
 //dapperExample2.Create("Lion King", "Simba", "I am the real lion king.");
@@ -74,11 +75,52 @@ DapperExample2 dapperExample2 = new DapperExample2();
 //dapperExample2.Delete(1019);
 
 
+var serviceProvider = new ServiceCollection()
+          .AddLogging()
+          .AddSingleton<AdoDotNetExample>()
+          .AddSingleton<AdoDotNetExample2>()
+          .AddSingleton<DapperExample>()
+          .AddSingleton<DapperExample2>()
+          .AddSingleton<EFCoreExample>()
+          .BuildServiceProvider();
+
+var adoDotNetExample= serviceProvider.GetRequiredService<AdoDotNetExample>();
+//adoDotNetExample.Read();
+//adoDotNetExample.Create();
+//adoDotNetExample.Edit();
+//adoDotNetExample.Update();
+//adoDotNetExample.Delete();
+
+var adoDotNetExample2 = serviceProvider.GetRequiredService<AdoDotNetExample2>();
+//adoDotNetExample2.Read();
+//adoDotNetExample2.Edit();
+//adoDotNetExample2.Create();
+//adoDotNetExample2.Delete();
+//adoDotNetExample2.Update();
 
 
+var dapperExample = serviceProvider.GetRequiredService<DapperExample>();
+//dapperExample.Read();
+//dapperExample.Create("Learning", "AML", "Learing Content");
+//dapperExample.Edit(1011);
+//dapperExample.Edit(1012);
+//dapperExample.Update(1011, "Learning-Update", "AML", "Learing Content Update");
+//dapperExample.Delete(1012);
 
 
+var dapperExample2 = serviceProvider.GetRequiredService<DapperExample2>();
+//dapperExample2.Read();
+//dapperExample2.Edit(1019);
+//dapperExample2.Create("Lion King", "Simba", "I am the real lion king.");
+//dapperExample2.Update(1019, "This is title", "This is author", "This is content");
+//dapperExample2.Delete(1019);
 
+var efcoreExample = serviceProvider.GetRequiredService<EFCoreExample>();
+//efcoreExample.Read();
+//efcoreExample.Create("Learning", "AML", "Learing Content");
+//efcoreExample.Edit(1011);
+//efcoreExample.Update(4, "Learning-321", "AML-321", "Learing Content 321");
+//efcoreExample.Delete(2);
 
 
 Console.ReadKey();
