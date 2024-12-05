@@ -38,7 +38,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.MiniDigitalWa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.MiniDigitalWallet.Domain", "AMLDotNetCore.MiniDigitalWallet.Domain\AMLDotNetCore.MiniDigitalWallet.Domain.csproj", "{4244C4B0-A69D-4C0E-883A-AF8DF9B16CA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMLDotNetCore.ConsoleApp3", "AMLDotNetCore.ConsoleApp3\AMLDotNetCore.ConsoleApp3.csproj", "{EFBBEC1B-C278-4D93-99D6-6640B78EE7CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.ConsoleApp3", "AMLDotNetCore.ConsoleApp3\AMLDotNetCore.ConsoleApp3.csproj", "{EFBBEC1B-C278-4D93-99D6-6640B78EE7CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMLDotNetCore.RestApi2", "AMLDotNetCore.RestApi2\AMLDotNetCore.RestApi2.csproj", "{829CED9E-4BD6-4039-AA8C-4B303EBDD22A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -110,6 +112,10 @@ Global
 		{EFBBEC1B-C278-4D93-99D6-6640B78EE7CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFBBEC1B-C278-4D93-99D6-6640B78EE7CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFBBEC1B-C278-4D93-99D6-6640B78EE7CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{829CED9E-4BD6-4039-AA8C-4B303EBDD22A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{829CED9E-4BD6-4039-AA8C-4B303EBDD22A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{829CED9E-4BD6-4039-AA8C-4B303EBDD22A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{829CED9E-4BD6-4039-AA8C-4B303EBDD22A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
