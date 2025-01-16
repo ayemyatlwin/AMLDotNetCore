@@ -40,7 +40,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.MiniDigitalWa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.ConsoleApp3", "AMLDotNetCore.ConsoleApp3\AMLDotNetCore.ConsoleApp3.csproj", "{EFBBEC1B-C278-4D93-99D6-6640B78EE7CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMLDotNetCore.RestApi2", "AMLDotNetCore.RestApi2\AMLDotNetCore.RestApi2.csproj", "{829CED9E-4BD6-4039-AA8C-4B303EBDD22A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.RestApi2", "AMLDotNetCore.RestApi2\AMLDotNetCore.RestApi2.csproj", "{829CED9E-4BD6-4039-AA8C-4B303EBDD22A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMLDotNetCore.MvcApp", "AMLDotNetCore.MvcApp\AMLDotNetCore.MvcApp.csproj", "{FDA2B3D8-23BD-42AB-B93A-91F9309B1DD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -116,6 +118,10 @@ Global
 		{829CED9E-4BD6-4039-AA8C-4B303EBDD22A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{829CED9E-4BD6-4039-AA8C-4B303EBDD22A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{829CED9E-4BD6-4039-AA8C-4B303EBDD22A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDA2B3D8-23BD-42AB-B93A-91F9309B1DD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDA2B3D8-23BD-42AB-B93A-91F9309B1DD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDA2B3D8-23BD-42AB-B93A-91F9309B1DD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDA2B3D8-23BD-42AB-B93A-91F9309B1DD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
