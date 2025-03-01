@@ -12,9 +12,13 @@ namespace AMLDotNetCore.Shared
 	{
 		private readonly HttpClient _httpClient;
 
-		public HttpClientService(HttpClient httpClient)
+		public HttpClientService(string domainUrl)
 		{
-			_httpClient = httpClient;
+			_httpClient = new HttpClient()
+			{
+				BaseAddress = new Uri(domainUrl)
+			};
+			
 		}
 
 		public async Task<T> SendAsync<T>(string url, EnumHttpMethod method, object? data = null)
