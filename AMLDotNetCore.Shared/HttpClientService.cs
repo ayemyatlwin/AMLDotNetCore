@@ -8,7 +8,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace AMLDotNetCore.Shared
 {
-	public class HttpClientService : I
+	public class HttpClientService : IHttpClientService
 	{
 		private readonly HttpClient _httpClient;
 
