@@ -43,7 +43,9 @@ namespace AMLDotNetCore.RestApi.Controllers
         {
             _db.TblBlogs.Add(blog);
             _db.SaveChanges();
-            return Ok(blog);
+            //return Ok(blog);
+            return Ok("Successfully Created!");
+
         }
 
 
@@ -64,7 +66,8 @@ namespace AMLDotNetCore.RestApi.Controllers
             _db.SaveChanges();
 
 
-            return Ok(item);
+            //return Ok(item);
+            return Ok("Successfully Updated!");
         }
 
 
@@ -90,8 +93,9 @@ namespace AMLDotNetCore.RestApi.Controllers
             }
             _db.Entry(item).State=EntityState.Modified;
             _db.SaveChanges();
-            return Ok(item);
-        }
+			//return Ok(item);
+			return Ok("Successfully Updated!");
+		}
 
         [HttpDelete ("{id}")]
         public IActionResult DeleteBlog(int id)
@@ -101,11 +105,11 @@ namespace AMLDotNetCore.RestApi.Controllers
             {
                 NotFound();
             }
-            item.DeleteFlag = true;
-            _db.Entry(item).State = EntityState.Modified;
-            //_db.Entry(item).State = EntityState.Deleted;
+            //item.DeleteFlag = true;
+            //_db.Entry(item).State = EntityState.Modified;
+            var result = _db.Entry(item).State = EntityState.Deleted;
             _db.SaveChanges();
-            return Ok(item);
+            return Ok("Successfully Deleted!");
         }
     }
 }

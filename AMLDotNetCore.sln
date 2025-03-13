@@ -48,7 +48,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.Project1.MvcA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.Project1.Api", "AMLDotNetCore.Project1.Api\AMLDotNetCore.Project1.Api.csproj", "{0DC661B9-B69E-41D7-AFD2-1C00E2EA36AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMLDotNetCore.BlazorWasm", "AMLDotNetCore.BlazorWasm\AMLDotNetCore.BlazorWasm.csproj", "{D6094101-36B6-4425-B4BA-05AA32FFE76B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMLDotNetCore.BlazorWasm", "AMLDotNetCore.BlazorWasm\AMLDotNetCore.BlazorWasm.csproj", "{D6094101-36B6-4425-B4BA-05AA32FFE76B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

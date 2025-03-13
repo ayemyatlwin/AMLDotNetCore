@@ -1,0 +1,93 @@
+﻿@page "/blog"
+@inject HttpClient Http
+@inject IJSRuntime JsRuntime
+
+<PageTitle>Blog Page</PageTitle>
+
+<h3>Blog List</h3>
+
+<div class="d-flex justify-content-end">
+    <NavLink href="/blog/create" class="btn btn-outline-success">Create New Blog</NavLink>
+</div>
+
+@if(_blog is not null)
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th></th>
+                <th>No.</th>
+                <th>Blog Title</th>
+                <th>Blog Author</th>
+                <th>Blog Content</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < _blog.Count; i++)
+            {
+                var blog = _blog[i];
+                var EditUrl = $"/blog/edit/{blog.BlogId}";
+
+                <tr>
+                    <td>
+                        <NavLink href="@EditUrl"  class="btn btn-warning">Edit</NavLink>
+                        <button @onclick="()=>Delete(blog.BlogId)" class="btn btn-danger">Delete</button>
+                    </td>
+                    <td>@(i + 1)</td>
+                    <td>@blog.BlogTitle</td>
+                    <td>@blog.BlogAuthot</td>
+                    <td>@blog.BlogContent</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+
+@code {
+    private List<BlogModel> _blog = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await List();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Console.WriteLine("First Render");
+        }
+    }
+
+    private async Task List()
+    {
+        var response = await Http.GetAsync("api/Blogs");
+        if (response.IsSuccessStatusCode)
+        {
+            var blogList = await response.Content.ReadAsStringAsync();
+            // Console.WriteLine(blogList);
+            _blog = JsonConvert.DeserializeObject<List<BlogModel>>(blogList)!;
+        };
+    }
+
+    private async Task  Delete(int id)
+    {
+        var confirm = await JsRuntime.InvokeAsync<bool>("confirm", "Are you sure wamt to delete ?");
+        if (!confirm) return;
+
+        var response = await Http.DeleteAsync($"api/Blogs/{id}");
+        if(!response.IsSuccessStatusCode)
+        {
+            return;
+        }
+       var message = await response.Content.ReadAsStringAsync();
+       await JsRuntime.InvokeVoidAsync("alert", message);
+       await List();
+
+    }
+    
+
+
+}

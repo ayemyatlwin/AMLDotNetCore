@@ -1,9 +1,23 @@
 using AMLDotNetCore.DataBase.Models;
 using AMLDotNetCore.Domain.Features.Blog;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.WebRequestMethods;
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("https://localhost:7050",
+                                              "http://localhost:5206").WithMethods("GET","POST","PUT","PATCH","DELETE").AllowAnyHeader();
+                      });
+});
 
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {
@@ -29,6 +43,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseCors(MyAllowSpecificOrigins);
+
 
 app.UseAuthorization();
 

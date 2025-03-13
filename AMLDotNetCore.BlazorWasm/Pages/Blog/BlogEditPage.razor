@@ -1,0 +1,68 @@
+﻿@page "/blog/edit/{id:int}"
+@inject HttpClient Http
+@inject NavigationManager Nav
+@inject IJSRuntime JsRuntime
+
+<PageTitle>Blog Edit @id Page</PageTitle>
+
+
+@if (id is not null)
+{
+    <h3>BlogEditPage</h3>
+    @if (_blog is not null)
+    {
+        <div>
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input type="text" class="form-control" @bind-value="_blog.BlogTitle">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Author</label>
+                <input type="text" class="form-control" @bind-value="_blog.BlogAuthot">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Content</label>
+                <input type="text" class="form-control" @bind-value="_blog.BlogContent">
+            </div>
+            <a href="/blog" class="btn btn-secondary">Back</a>
+            <button type="button" class="btn btn-success" @onclick="Update">Save</button>
+        </div>
+    }
+}
+
+@code {
+    [Parameter]
+    public int? id { get; set; }
+
+    private BlogModel? _blog = null;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+
+        if (firstRender)
+        {
+            var response = await Http.GetAsync($"api/Blogs/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var blog = await response.Content.ReadAsStringAsync();
+                _blog = JsonConvert.DeserializeObject<BlogModel>(blog)!;
+                StateHasChanged();
+            }
+        }
+
+    }
+
+    private async Task Update()
+    {
+        var jsonBlog = JsonConvert.SerializeObject(_blog);
+        var content = new StringContent(jsonBlog, Encoding.UTF8, Application.Json);
+        var response = await Http.PutAsync($"api/Blogs/{id}", content);
+        if (response.IsSuccessStatusCode)
+        {
+            var message = await response.Content.ReadAsStringAsync();
+            await JsRuntime.InvokeVoidAsync("alert", message);
+            Nav.NavigateTo("/blog");
+        }
+    }
+
+}
