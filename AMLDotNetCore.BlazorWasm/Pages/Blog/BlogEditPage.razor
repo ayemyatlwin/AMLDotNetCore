@@ -59,7 +59,7 @@
         var response = await Http.PutAsync($"api/Blogs/{id}", content);
         if (response.IsSuccessStatusCode)
         {
-            var message = await response.Content.ReadAsStringAsync();
+            var message = response.Content.ReadAsStringAsync();
             await JsRuntime.InvokeVoidAsync("alert", message);
             Nav.NavigateTo("/blog");
         }
