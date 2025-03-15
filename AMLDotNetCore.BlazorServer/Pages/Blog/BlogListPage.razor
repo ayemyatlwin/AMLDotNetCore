@@ -1,0 +1,59 @@
+﻿@page "/blog"
+@using AMLDotNetCore.BlazorServer.Database
+@using AMLDotNetCore.BlazorServer.Models
+@using Microsoft.EntityFrameworkCore
+@inject AppDbContext db
+
+<PageTitle>Blog List Page</PageTitle>
+
+<h3>BlogListPage</h3>
+
+
+@if (_blog is not null)
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th></th>
+                <th>No.</th>
+                <th>Blog Title</th>
+                <th>Blog Author</th>
+                <th>Blog Content</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < _blog.Count; i++)
+            {
+                var blog = _blog[i];
+                var EditUrl = $"/blog/edit/{blog.BlogId}";
+
+                <tr>
+                    <td>
+                        <NavLink href="@EditUrl" class="btn btn-warning">Edit</NavLink>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                    <td>@(i + 1)</td>
+                    <td>@blog.BlogTitle</td>
+                    <td>@blog.BlogAuthot</td>
+                    <td>@blog.BlogContent</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+@code {
+
+    public List<BlogModel>? _blog;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _blog = await db.Blogs.ToListAsync();
+            StateHasChanged();
+        };
+    }
+
+}
